@@ -7,7 +7,6 @@ import CupomDesconto from '../../components/Home/CupomDesconto';
 import Sugestoes from '../../components/Home/Sugestoes';
 import Promocoes from '../../components/Home/Promocoes';
 import Categorias from '../../components/Home/Categorias';
-import Restaurantes from '../../components/Home/Restaurantes';
 
 export default function Home() {
   return (
@@ -18,7 +17,6 @@ export default function Home() {
       <Sugestoes />
       <Promocoes />
       <Categorias />
-      <Restaurantes />
     </ScrollView>
   );
 }
@@ -26,6 +24,6 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#B0E0E6',
   },
 });

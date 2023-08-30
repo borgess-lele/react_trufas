@@ -13,7 +13,7 @@ export default function CupomDesconto() {
           />
           <View style={styles.info}>
             <Text style={styles.titulo}>Cupom de R$10</Text>
-            <Text style={styles.validade}>Válido até as 17:30</Text>
+            <Text style={styles.validade}>Válido até as 20:30</Text>
           </View>
         </View>
         <MaterialIcons
