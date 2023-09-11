@@ -6,17 +6,23 @@ import Input from '../../components/Input';
 import CupomDesconto from '../../components/Home/CupomDesconto';
 import Sugestoes from '../../components/Home/Sugestoes';
 import Promocoes from '../../components/Home/Promocoes';
-import Categorias from '../../components/Home/Categorias';
+import Sabor from '../../components/Home/Sabor';
+import Combo from '../../components/Home/Combo';
+import Sem_Lactose from '../../components/Home/Sem_Lactose';
+
 
 export default function Home() {
   return (
     <ScrollView showsHorizontalScrollIndicator={true} style={styles.container}>
       <Endereco />
       <Input placeholder="Busque por item ou loja" />
+     
       <CupomDesconto />
       <Sugestoes />
       <Promocoes />
-      <Categorias />
+      <Combo />
+      <Sabor />
+      <Sem_Lactose />
     </ScrollView>
   );
 }

@@ -9,34 +9,34 @@ import {
 } from 'react-native';
 import api from '../../services/api';
 
-export default function Categorias() {
-  const [categorias, setCategorias] = useState([]);
+export default function Combo() {
+  const [combo, setCombo] = useState([]);
 
   useEffect(() => {
-    async function carregarCategorias() {
-      const response = await api.get('categories');
-      setCategorias(response.data);
+    async function carregarCombo() {
+      const response = await api.get('combos');
+      setCombo(response.data);
     }
-    carregarCategorias();
+    carregarCombo();
   }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.titulo}>Categorias</Text>
+        <Text style={styles.titulo}>Combos</Text>
       </View>
       <ScrollView
         showsHorizontalScrollIndicator={false}
         horizontal
         style={styles.lista}
       >
-        {categorias.map((categoria) => (
-          <TouchableOpacity key={categoria.id} style={styles.item}>
+        {combo.map((combo) => (
+          <TouchableOpacity key={combo.id} style={styles.item}>
             <Image
-              source={{ uri: categoria.categorie_url }} 
+              source={{ uri: combo.image }} 
               style={styles.imagem}
             />
-            <Text style={styles.categoriaTitulo}>{categoria.title}</Text>
+            <Text style={styles.comboTitulo}>{combo.title}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
