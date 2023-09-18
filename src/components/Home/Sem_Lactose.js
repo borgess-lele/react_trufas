@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Image,
   ScrollView,
@@ -6,15 +6,15 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
-} from 'react-native';
-import api from '../../services/api';
+} from "react-native";
+import api from "../../plugins/api";
 
 export default function Sem_Lactose() {
   const [sem_lactose, setSem_Lactose] = useState([]);
 
   useEffect(() => {
     async function carregarSem_Lactose() {
-      const response = await api.get('sem_lactose');
+      const response = await api.get("sem_lactose");
       setSem_Lactose(response.data);
     }
     carregarSem_Lactose();
@@ -32,10 +32,7 @@ export default function Sem_Lactose() {
       >
         {sem_lactose.map((sem_lactose) => (
           <TouchableOpacity key={sem_lactose.id} style={styles.item}>
-            <Image
-              source={{ uri: sem_lactose.image }} 
-              style={styles.imagem}
-            />
+            <Image source={{ uri: sem_lactose.image }} style={styles.imagem} />
             <Text style={styles.sem_lactoseTitulo}>{sem_lactose.title}</Text>
           </TouchableOpacity>
         ))}
@@ -54,7 +51,7 @@ const styles = StyleSheet.create({
   },
   titulo: {
     fontSize: 23,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   lista: {
     marginTop: 10,
@@ -62,7 +59,7 @@ const styles = StyleSheet.create({
   },
   item: {
     marginRight: 15,
-    alignItems: 'center',
+    alignItems: "center",
   },
   imagem: {
     width: 200,
@@ -72,6 +69,6 @@ const styles = StyleSheet.create({
   categoriaTitulo: {
     fontSize: 16,
     marginTop: 10,
-    color: '#999',
+    color: "#999",
   },
 });

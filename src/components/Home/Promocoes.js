@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import api from '../../services/api';
+import React, { useState, useEffect } from "react";
+import { Image, TouchableOpacity, ScrollView, StyleSheet } from "react-native";
+import api from "../../plugins/api";
 
 export default function Promocoes({ navigation }) {
   const [promocoes, setPromocoes] = useState([]);
 
   useEffect(() => {
     async function carregarPromocoes() {
-      const response = await api.get('promotions');
+      const response = await api.get("promotions");
       setPromocoes(response.data);
     }
     carregarPromocoes();

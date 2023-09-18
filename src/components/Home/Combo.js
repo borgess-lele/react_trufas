@@ -1,24 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Image,
   ScrollView,
-  Text,
   TouchableOpacity,
   View,
   StyleSheet,
-} from 'react-native';
-import api from '../../services/api';
+} from "react-native";
+import { Text, Button, List } from 'react-native-paper';
+
+
+import comboService from "../../services/combo";
 
 export default function Combo() {
-  const [combo, setCombo] = useState([]);
+  const [combos, setCombos] = useState([]);
 
-  useEffect(() => {
-    async function carregarCombo() {
-      const response = await api.get('combos');
-      setCombo(response.data);
-    }
-    carregarCombo();
+  const getCombos = async () => {
+    const data = await comboService.getAllCombos();
+    setCombos(data);
+  };
+
+  useEffect(async () => {
+    getCombos();
   }, []);
+
+  const updateCombos = async () => {
+    await getCombos();
+  };
 
   return (
     <View style={styles.container}>
@@ -30,15 +37,16 @@ export default function Combo() {
         horizontal
         style={styles.lista}
       >
-        {combo.map((combo) => (
+        {combos.map((combo) => (
           <TouchableOpacity key={combo.id} style={styles.item}>
             <Image
-              source={{ uri: combo.image }} 
+              source={{ uri: combo.capa.url }} 
               style={styles.imagem}
             />
-            <Text style={styles.comboTitulo}>{combo.title}</Text>
+            <Text style={styles.nome}>{combo.capa.description}</Text>
           </TouchableOpacity>
         ))}
+
       </ScrollView>
     </View>
   );
@@ -54,7 +62,7 @@ const styles = StyleSheet.create({
   },
   titulo: {
     fontSize: 23,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   lista: {
     marginTop: 10,
@@ -62,7 +70,7 @@ const styles = StyleSheet.create({
   },
   item: {
     marginRight: 15,
-    alignItems: 'center',
+    alignItems: "center",
   },
   imagem: {
     width: 200,
@@ -72,6 +80,6 @@ const styles = StyleSheet.create({
   categoriaTitulo: {
     fontSize: 16,
     marginTop: 10,
-    color: '#999',
+    color: "#999",
   },
 });

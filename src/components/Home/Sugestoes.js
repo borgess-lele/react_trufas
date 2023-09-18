@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Image,
   ScrollView,
   Text,
   TouchableOpacity,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
 
-import api from '../../services/api';
+import api from "../../plugins/api";
 
 export default function Sugestoes() {
   const [sugestoes, setSugestoes] = useState([]);
   useEffect(() => {
     async function carregarSugestoes() {
-      const response = await api.get('suggestions');
+      const response = await api.get("suggestions");
       setSugestoes(response.data);
     }
     carregarSugestoes();
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
   },
   item: {
-    alignItems: 'center',
+    alignItems: "center",
     marginLeft: 15,
   },
   imagem: {
@@ -46,6 +46,6 @@ const styles = StyleSheet.create({
   },
   titulo: {
     marginTop: 3,
-    color: '#999',
+    color: "#999",
   },
 });

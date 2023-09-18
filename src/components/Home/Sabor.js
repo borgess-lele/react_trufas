@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Image,
   ScrollView,
@@ -6,15 +6,15 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
-} from 'react-native';
-import api from '../../services/api';
+} from "react-native";
+import api from "../../plugins/api";
 
 export default function Sabor() {
   const [sabor, setSabor] = useState([]);
 
   useEffect(() => {
     async function carregarSabor() {
-      const response = await api.get('sabories');
+      const response = await api.get("sabories");
       setSabor(response.data);
     }
     carregarSabor();
@@ -32,10 +32,7 @@ export default function Sabor() {
       >
         {sabor.map((sabor) => (
           <TouchableOpacity key={sabor.id} style={styles.item}>
-            <Image
-              source={{ uri: sabor.image }} 
-              style={styles.imagem}
-            />
+            <Image source={{ uri: sabor.image }} style={styles.imagem} />
             <Text style={styles.saborTitulo}>{sabor.title}</Text>
           </TouchableOpacity>
         ))}
@@ -54,7 +51,7 @@ const styles = StyleSheet.create({
   },
   titulo: {
     fontSize: 23,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   lista: {
     marginTop: 10,
@@ -62,7 +59,7 @@ const styles = StyleSheet.create({
   },
   item: {
     marginRight: 15,
-    alignItems: 'center',
+    alignItems: "center",
   },
   imagem: {
     width: 200,
@@ -72,6 +69,6 @@ const styles = StyleSheet.create({
   categoriaTitulo: {
     fontSize: 16,
     marginTop: 10,
-    color: '#999',
+    color: "#999",
   },
 });
