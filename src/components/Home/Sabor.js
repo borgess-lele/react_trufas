@@ -7,18 +7,26 @@ import {
   View,
   StyleSheet,
 } from "react-native";
-import api from "../../plugins/api";
+import { Button, List} from 'react-native-paper';
+
+
+import saborService from "../../services/sabor";
 
 export default function Sabor() {
-  const [sabor, setSabor] = useState([]);
+  const [sabors, setSabors] = useState([]);
 
-  useEffect(() => {
-    async function carregarSabor() {
-      const response = await api.get("sabories");
-      setSabor(response.data);
-    }
-    carregarSabor();
+  const getSabors = async () => {
+    const data = await saborService.getAllSabors();
+    setSabors(data);
+  };
+
+  useEffect(async () => {
+    getSabors();
   }, []);
+
+  const updateSabors = async () => {
+    await getSabors();
+  };
 
   return (
     <View style={styles.container}>
@@ -30,10 +38,10 @@ export default function Sabor() {
         horizontal
         style={styles.lista}
       >
-        {sabor.map((sabor) => (
+        {sabors.map((sabor) => (
           <TouchableOpacity key={sabor.id} style={styles.item}>
-            <Image source={{ uri: sabor.image }} style={styles.imagem} />
-            <Text style={styles.saborTitulo}>{sabor.title}</Text>
+            <Image source={{ uri: sabor.capa.url}} style={styles.imagem} />
+            <Text style={styles.nome}>{sabor.capa.description}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>

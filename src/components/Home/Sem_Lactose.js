@@ -7,18 +7,25 @@ import {
   View,
   StyleSheet,
 } from "react-native";
-import api from "../../plugins/api";
+import { Button, List} from 'react-native-paper';
 
+
+import sem_lactoseService from "../../services/sem_lactose";
 export default function Sem_Lactose() {
-  const [sem_lactose, setSem_Lactose] = useState([]);
+  const [sem_lactoses, setSem_Lactoses] = useState([]);
 
-  useEffect(() => {
-    async function carregarSem_Lactose() {
-      const response = await api.get("sem_lactose");
-      setSem_Lactose(response.data);
-    }
-    carregarSem_Lactose();
+  const getSem_Lactoses = async () => {
+    const data = await sem_lactoseService.getAllSem_Lactoses();
+    setSem_Lactoses(data);
+  };
+
+  useEffect(async () => {
+    getSem_Lactoses();
   }, []);
+
+  const updateSem_Lactoses = async () => {
+    await getSem_Lactoses();
+  };
 
   return (
     <View style={styles.container}>
@@ -30,10 +37,10 @@ export default function Sem_Lactose() {
         horizontal
         style={styles.lista}
       >
-        {sem_lactose.map((sem_lactose) => (
+        {sem_lactoses.map((sem_lactose) => (
           <TouchableOpacity key={sem_lactose.id} style={styles.item}>
-            <Image source={{ uri: sem_lactose.image }} style={styles.imagem} />
-            <Text style={styles.sem_lactoseTitulo}>{sem_lactose.title}</Text>
+            <Image source={{ uri: sem_lactose.capa.url}} style={styles.imagem} />
+            <Text style={styles.nome}>{sem_lactose.capa.description}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
