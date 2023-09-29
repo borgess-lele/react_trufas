@@ -9,41 +9,41 @@ import {
 import { Text, Button, List } from 'react-native-paper';
 
 
-import comboService from "../../services/combo";
+import trufaService from "../../services/trufa";
 
-export default function Combo() {
-  const [combos, setCombos] = useState([]);
+export default function Trufa() {
+  const [trufas, setTrufas] = useState([]);
 
-  const getCombos = async () => {
-    const data = await comboService.getAllCombos();
-    setCombos(data);
+  const getTrufas = async () => {
+    const data = await trufaService.getAllTrufas();
+    setTrufas(data);
   };
 
   useEffect(async () => {
-    getCombos();
+    getTrufas();
   }, []);
 
-  const updateCombos = async () => {
-    await getCombos();
+  const updateTrufas = async () => {
+    await getTrufas();
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.titulo}>Combos</Text>
+        <Text style={styles.titulo}>Trufas</Text>
       </View>
       <ScrollView
         showsHorizontalScrollIndicator={false}
         horizontal
         style={styles.lista}
       >
-        {combos.map((combo) => (
-          <TouchableOpacity key={combo.id} style={styles.item}>
+        {trufas.map((trufa) => (
+          <TouchableOpacity key={trufa.id} style={styles.item}>
             <Image
-              source={{ uri: combo.capa.url }} 
+              source={{ uri: trufa.capa.url }} 
               style={styles.imagem}
             />
-            <Text style={styles.nome}>{combo.capa.description}</Text>
+            <Text style={styles.nome}>{trufa.capa.description}</Text>
           </TouchableOpacity>
         ))}
 

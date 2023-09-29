@@ -6,9 +6,7 @@ import Input from '../../components/Input';
 import CupomDesconto from '../../components/Home/CupomDesconto';
 import Sugestoes from '../../components/Home/Sugestoes';
 import Promocoes from '../../components/Home/Promocoes';
-import Sabor from '../../components/Home/Sabor';
-import Combo from '../../components/Home/Combo';
-import Sem_Lactose from '../../components/Home/Sem_Lactose';
+import Trufa from '../../components/Home/Trufa';
 
 
 export default function Home() {
@@ -20,9 +18,7 @@ export default function Home() {
       <CupomDesconto />
       <Sugestoes />
       <Promocoes />
-      <Combo />
-      <Sabor />
-      <Sem_Lactose />
+      <Trufa />
     </ScrollView>
   );
 }
