@@ -6,8 +6,7 @@ import {
   View,
   StyleSheet,
 } from "react-native";
-import { Text, Button, List } from 'react-native-paper';
-
+import { Text, Button, List } from "react-native-paper";
 
 import trufaService from "../../services/trufa";
 
@@ -39,14 +38,10 @@ export default function Trufa() {
       >
         {trufas.map((trufa) => (
           <TouchableOpacity key={trufa.id} style={styles.item}>
-            <Image
-              source={{ uri: trufa.capa.url }} 
-              style={styles.imagem}
-            />
-            <Text style={styles.nome}>{trufa.capa.description}</Text>
+            <Text styl={styles.nome}> {trufa.nome} </Text>
+            <Image source={{ uri: trufa.imagem.url }} style={styles.imagem} />
           </TouchableOpacity>
         ))}
-
       </ScrollView>
     </View>
   );

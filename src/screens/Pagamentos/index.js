@@ -112,7 +112,7 @@ export default function Pagamentos() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFDEAD',
+    backgroundColor: '#CCFF',
     alignItems: 'center',
     padding: 20,
 

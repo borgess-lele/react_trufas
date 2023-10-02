@@ -21,7 +21,7 @@ function PedidosRouter() {
       <Tab.Screen name="Pedidos" component={Pedidos} />
       <Tab.Screen
         name="PedidosAnteriores"
-        component={PedidosAnteriores}
+        component={Pedidos}
         options={{ tabBarLabel: 'PedidosAnteriores' }}
       />
     </Tab.Navigator>
