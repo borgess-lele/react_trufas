@@ -9,11 +9,35 @@ import Busca from './screens/Busca';
 import Perfil from './screens/Perfil';
 import Pagamentos from './screens/Pagamentos';
 import Pedidos from './screens/Pedidos';
+import PedidosAnteriores from './screens/PedidosAnteriores';
+import Login from './screens/Login';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 const Tab = createMaterialTopTabNavigator();
+
+
+function LoginRouter() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="Login" component={Login} />
+    </Stack.Navigator>
+  );
+}
+
+function HomeRoutes() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Item" component={Item} />
+    </Stack.Navigator>
+  );
+}
 
 function PedidosRouter() {
   return (
@@ -21,7 +45,7 @@ function PedidosRouter() {
       <Tab.Screen name="Pedidos" component={Pedidos} />
       <Tab.Screen
         name="PedidosAnteriores"
-        component={Pedidos}
+        component={PedidosAnteriores}
         options={{ tabBarLabel: 'PedidosAnteriores' }}
       />
     </Tab.Navigator>
@@ -72,7 +96,7 @@ export default function Routes() {
           }}
         />
         <BottomTab.Screen
-          name="Pedidos"
+          name="PedidosRouter"
           component={PedidosRouter}
           options={{
             tabBarLabel: 'Pedidos',
@@ -89,6 +113,17 @@ export default function Routes() {
             tabBarLabel: 'Perfil',
             tabBarIcon: ({ color }) => (
               <MaterialIcons name="person" color={color} size={26} />
+            ),
+          }}
+        />
+         <BottomTab.Screen
+          name="Login"
+          component={Login}
+          options={{
+            headerShown: false,
+            tabBarLabel: 'Login',
+            tabBarIcon: ({ color }) => (
+              <MaterialIcons name="login" color={color} size={26} />
             ),
           }}
         />

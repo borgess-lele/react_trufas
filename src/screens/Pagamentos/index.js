@@ -112,26 +112,39 @@ export default function Pagamentos() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#CCFF',
+    backgroundColor: '#f2f2f2', 
     alignItems: 'center',
     padding: 20,
-
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: '#333', 
   },
   paymentMethodPicker: {
     marginBottom: 20,
+    width: '80%', 
   },
   input: {
-    height: 40,
-    borderColor: 'gray',
+    height: 45, 
+    borderColor: '#ccc', 
     borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 10,
-    paddingHorizontal: 10,
+    borderRadius: 8, 
+    marginBottom: 15, 
+    paddingHorizontal: 15,
     width: '100%',
+  },
+  button: {
+    backgroundColor: '#007bff', 
+    color: '#fff', // 
+    borderRadius: 8, 
+    height: 50, 
+    width: '50%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: '#fff', 
   },
 });
