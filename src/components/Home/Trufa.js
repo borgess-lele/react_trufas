@@ -10,7 +10,7 @@ import { Text, Button, List } from "react-native-paper";
 
 import trufaService from "../../services/trufa";
 
-export default function Trufa() {
+export default function Trufa({navigation}) {
   const [trufas, setTrufas] = useState([]);
 
   const getTrufas = async () => {
@@ -37,7 +37,7 @@ export default function Trufa() {
         style={styles.lista}
       >
         {trufas.map((trufa) => (
-          <TouchableOpacity key={trufa.id} style={styles.item}>
+          <TouchableOpacity key={trufa.id} style={styles.item} onPress={()=>navigation.navigate('Compras')}>
             <Text styl={styles.nome}> {trufa.nome} </Text>
             <Image source={{ uri: trufa.imagem.url }} style={styles.imagem} />
           </TouchableOpacity>

@@ -9,7 +9,7 @@ import Promocoes from '../../components/Home/Promocoes';
 import Trufa from '../../components/Home/Trufa';
 
 
-export default function Home() {
+export default function Home({navigation}) {
   return (
     <ScrollView showsHorizontalScrollIndicator={true} style={styles.container}>
       <Endereco />
@@ -18,7 +18,7 @@ export default function Home() {
       <CupomDesconto />
       <Sugestoes />
       <Promocoes />
-      <Trufa />
+      <Trufa navigation={navigation}/>
     </ScrollView>
   );
 }

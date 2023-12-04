@@ -11,12 +11,13 @@ import Pagamentos from './screens/Pagamentos';
 import Pedidos from './screens/Pedidos';
 import PedidosAnteriores from './screens/PedidosAnteriores';
 import Login from './screens/Login';
+import Compras from './screens/Compras';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 const Tab = createMaterialTopTabNavigator();
-
+const Stack = createStackNavigator();
 
 function LoginRouter() {
   return (
@@ -34,7 +35,7 @@ function HomeRoutes() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Item" component={Item} />
+      <Stack.Screen name="Compras" component={Compras} />
     </Stack.Navigator>
   );
 }
@@ -60,6 +61,7 @@ function PerfilRoutes() {
     <PerfilStack.Navigator>
       <PerfilStack.Screen name="Perfil" component={Perfil} />
       <PerfilStack.Screen name="Pagamentos" component={Pagamentos} />
+      
     </PerfilStack.Navigator>
   );
 } 
@@ -77,7 +79,7 @@ export default function Routes() {
       >
         <BottomTab.Screen
           name="Home"
-          component={Home}
+          component={HomeRoutes}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
@@ -127,7 +129,8 @@ export default function Routes() {
             ),
           }}
         />
-        
+      
+
       </BottomTab.Navigator>
     </NavigationContainer>
   );
